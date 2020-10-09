@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 /**
  * @program: OJhomework
- * @description
+ * @description 从pdf复制的文字格式调整，存入文件中
  * @author: 李星泽
  * @create: 2020-10-03 10:21
  **/
@@ -22,11 +22,8 @@ public class CharChange {
         aimStr = aimStr.replace(" :", "");
         aimStr = aimStr.replace(" 。", "。");
         aimStr = aimStr.replace(" ", "");
-        BufferedWriter bufferedWriter=new BufferedWriter(new FileWriter("charChange.txt"));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("charChange.txt"));
         bufferedWriter.write(aimStr);
         bufferedWriter.close();
-//        System.out.println();
-//        System.out.println("输出为：");
-//        System.out.println(aimStr);
     }
 }
