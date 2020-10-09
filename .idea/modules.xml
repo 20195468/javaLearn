@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/LearnAndOj.iml" filepath="$PROJECT_DIR$/LearnAndOj.iml" />
       <module fileurl="file://$PROJECT_DIR$/P0629/P0629.iml" filepath="$PROJECT_DIR$/P0629/P0629.iml" />
       <module fileurl="file://$PROJECT_DIR$/ReflectLearn/ReflectLearn.iml" filepath="$PROJECT_DIR$/ReflectLearn/ReflectLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/genericity/genericity.iml" filepath="$PROJECT_DIR$/genericity/genericity.iml" />
       <module fileurl="file://$PROJECT_DIR$/p0630/p0630.iml" filepath="$PROJECT_DIR$/p0630/p0630.iml" />
       <module fileurl="file://$PROJECT_DIR$/p0702/p0702.iml" filepath="$PROJECT_DIR$/p0702/p0702.iml" />
     </modules>
