@@ -1,8 +1,4 @@
-import sun.reflect.generics.tree.Tree;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @program: OJhomework
@@ -24,17 +20,25 @@ public class Deepth {
         treeNode.right = firstRight;
         firstLeft.left = new TreeNode("D");
         firstLeft.right = new TreeNode("E");
+        System.out.println("Preorder Traversal");
+        PreorderTraversal(treeNode);
+        System.out.println("\nInorder Traversal");
+        InorderTraversal(treeNode);
+
+    }
+
+    public static void PreorderTraversal(TreeNode treeNode) {
         //存放结点的值
         List<String> list = new ArrayList<>();
         //栈存放结点
         Stack<TreeNode> stack = new Stack<>();
         stack.push(treeNode);
-        //栈空时结束
+        //栈空时结束 这里的深度优先搜索实现的是先序遍历
         while (!stack.isEmpty()) {
             TreeNode tree = stack.pop();
             /*
             先将右结点推入栈中再将左结点推入栈中
-            先推右结点再推左节点的原因是为了深度优先搜索一深到底
+            先推右结点再推左节点的原因是为了记录路径
              */
             if (tree.right != null) {
                 stack.push(tree.right);
@@ -45,8 +49,36 @@ public class Deepth {
             list.add(tree.val);
         }
         for (String s : list) {
-            System.out.print(s+" ");
+            System.out.print(s + " ");
         }
     }
+
+    public static void InorderTraversal(TreeNode root) {
+        //存放结点
+        Stack<TreeNode> stack = new Stack<>();
+        //存放结点的值
+        ArrayList<String> strings = new ArrayList<>();
+        TreeNode temp = null;
+        if (root != null) {
+            temp = root;
+            while (!stack.isEmpty() || temp != null) {
+                //一直找到最左方不存在左孩子的结点
+                while (temp != null) {
+                    stack.push(temp);
+                    temp = temp.left;
+                }
+                if (!stack.isEmpty()) {
+                    temp = stack.pop();
+                    strings.add(temp.val);
+                    temp = temp.right;
+                }
+            }
+        }
+        for (String s : strings) {
+            System.out.print(s + " ");
+        }
+        System.out.println();
+    }
 }
+
 
