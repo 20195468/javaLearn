@@ -40,6 +40,10 @@ class Node {
 
 public class Solution {
     public static void main(String[] args) {
+
+        float num= 0.5F;
+        System.out.println(Float.floatToIntBits(num));
+
 //        ListNode listNode1 = new ListNode(2);
 //        ListNode listNode2 = new ListNode(4);
 //        ListNode listNode3 = new ListNode(3);
