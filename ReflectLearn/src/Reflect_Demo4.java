@@ -1,3 +1,4 @@
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
@@ -16,15 +17,19 @@ public class Reflect_Demo4 {
         Method[] methods = personClass.getDeclaredMethods();
         for (Method method : methods) {
             System.out.println(method);
-            String name=method.getName();
-            System.out.println(name);
+            String methodName = method.getName();
+            System.out.println(methodName);
         }
-        Method eat_Method1=personClass.getMethod("eat");
-        Person person=new Person();
+        Method eat_Method1 = personClass.getMethod("eat");
+        Person person = new Person();
         eat_Method1.invoke(person);
-        Method eat_Method2=personClass.getMethod("eat", String.class);
-        eat_Method2.invoke(person,"猪油炒饭");
-
+        Method eat_Method2 = personClass.getMethod("eat", String.class);
+        eat_Method2.invoke(person, "猪油炒饭");
+        Method method_showMessage = personClass.getDeclaredMethod("showMessage", String.class);
+        method_showMessage.setAccessible(true);
+        Field b = personClass.getDeclaredField("b");
+        b.set(person, "拼命奔跑");
+        method_showMessage.invoke(person,"没伞的孩子要学会");
         //类名的获取
         System.out.println(personClass.getName());
 

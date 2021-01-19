@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * @program: OJhomework
@@ -28,16 +27,45 @@ public class Comparable_Demo {
         Collections.sort(studentArrayList);
         System.out.println(studentArrayList);
 
+        List<Teacher> teachers = new ArrayList<>();
+        teachers.add(new Teacher("laozhang", 39));
+        teachers.add(new Teacher("laoli", 36));
+        teachers.add(new Teacher("laozhou", 41));
+        teachers.sort(Comparator.comparing(Teacher::getName));
+        for (Teacher teacher : teachers) {
+            System.out.println(teacher);
+        }
+        Teacher teacher1=new Teacher("张雪",37);
+        Teacher teacher2=new Teacher("张斌",59);
+        Teacher teacher3=new Teacher("张斌",59);
+        System.out.println(teacher1.equals(teacher2));
+        System.out.println(teacher2.equals(teacher3));
     }
 }
 
 //实现comparable使Student能被排序
-class Student implements Comparable {
+class Student implements Comparable<Student> {
     private String name;
     private int ranking;
 
     public Student(String name, int ranking) {
         this.name = name;
+        this.ranking = ranking;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
         this.ranking = ranking;
     }
 
@@ -48,8 +76,56 @@ class Student implements Comparable {
 
     //根据ranking的值进行排序(this-o表示降序)
     @Override
-    public int compareTo(Object o) {
-        Student a = (Student) o;
-        return this.ranking - a.ranking;
+    public int compareTo(Student o) {
+        return this.ranking - o.ranking;
+    }
+}
+
+class Teacher {
+    private String name;
+    private int ranking;
+
+    public Teacher(String name, int ranking) {
+        this.name = name;
+        this.ranking = ranking;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(int ranking) {
+        this.ranking = ranking;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        //先比较地址
+        if (this == o) return true;
+        //再判断是否为同一个类
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return ranking == teacher.ranking && Objects.equals(name, teacher.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, ranking);
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", ranking=" + ranking +
+                '}';
     }
 }

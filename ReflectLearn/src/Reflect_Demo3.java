@@ -47,9 +47,12 @@ public class Reflect_Demo3 {
         //创建不带参形式的对象可以通过class直接创建
         Object object2 = personClass.newInstance();
         Field age=personClass.getDeclaredField("age");
+        Field name1=personClass.getDeclaredField("name");
+        name1.setAccessible(true);
+        name1.set(object2,"李四");
         age.setAccessible(true);
         age.set(object2,13);
-        System.out.println(object);
+        System.out.println(object2);
 
         //反射获取的构造函数同样存在暴利反射的能力
         //setAccessible(true);

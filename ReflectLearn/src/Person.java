@@ -45,6 +45,10 @@ public class Person {
         System.out.println("你在吃嘛？？" + "\n" + food);
     }
 
+    private void showMessage(String action) {
+        System.out.println(action + this.b);
+    }
+
     @Override
     public String toString() {
         return "Person{" +
