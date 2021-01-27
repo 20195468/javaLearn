@@ -40,31 +40,56 @@ class Node {
 
 public class Solution {
     public static void main(String[] args) {
+        int[] nums1 = {1, 3};
+        int[] nums2 = {2};
+        System.out.println(findMedianSortedArrays(nums1, nums2));
+    }
 
-        float num= 0.5F;
-        System.out.println(Float.floatToIntBits(num));
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int nums1Len = nums1.length;
+        int nums2Len = nums2.length;
+        int sumLen = nums1Len + nums2Len;
+        int middle = sumLen / 2;
+        if (nums1Len == 0) {
+            if (sumLen % 2 == 0) return ((double) nums2[middle] + (double) nums2[middle - 1]) / 2;
+            return nums2[middle];
+        }
+        if (nums2Len == 0) {
+            if (sumLen % 2 == 0) return ((double) nums1[middle] + (double) nums1[middle - 1]) / 2;
+            return nums1[middle];
+        }
 
-//        ListNode listNode1 = new ListNode(2);
-//        ListNode listNode2 = new ListNode(4);
-//        ListNode listNode3 = new ListNode(3);
-//        ListNode listNode4 = new ListNode(5);
-//        ListNode listNode5 = new ListNode(6);
-//        ListNode listNode6 = new ListNode(4);
-//        listNode1.next = listNode2;
-//        listNode2.next = listNode3;
-//        listNode3.next = null;
-//        listNode4.next = listNode5;
-//        listNode5.next = listNode6;
-//        listNode6.next = null;
-//        addTwoNumbers(listNode1, listNode4);
-//        int[] arr1 = {4, 9, 5};
-//        int[] arr2 = {9, 4, 9, 8, 4};
-//        int[] num = intersection(arr1, arr2);
-//        for (int i : num) {
-//            System.out.println(i);
-//        }
-//        int[] arr1 = {1, 7, 9, 5, 4, 1, 2};
-//        validMountainArray(arr1);
+        int nums1pointer = 0, nums2pointer = 0;
+        for (int pointer = 0; pointer < middle; pointer++) {
+            if (nums1[nums1pointer] < nums2[nums2pointer]) {
+                nums1pointer++;
+            } else if (nums1[nums1pointer] > nums2[nums2pointer]) {
+                nums2pointer++;
+            }else {
+                nums1pointer++;
+                nums2pointer++;
+                pointer++;
+            }
+        }
+        if (sumLen % 2 == 0) return ((double) nums1[nums1pointer] + (double) nums1[nums2pointer]) / 2;
+        return 0;
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int end = -1, max = 0;
+        int length = s.length();
+        Set<Character> character = new HashSet<>();
+        for (int i = 0; i < length; i++) {
+            if (i != 0) {
+                character.remove(s.charAt(i - 1));
+            }
+            while (end + 1 < length && !character.contains(s.charAt(end + 1))) {
+                character.add(s.charAt(end + 1));
+                end++;
+            }
+            max = Math.max(max, end - i + 1);
+        }
+        return max;
     }
 
     int res, k;
@@ -83,8 +108,8 @@ public class Solution {
     }
 
     boolean recur(TreeNode A, TreeNode B) {
-        if(B == null) return true;
-        if(A == null || A.val != B.val) return false;
+        if (B == null) return true;
+        if (A == null || A.val != B.val) return false;
         return recur(A.left, B.left) && recur(A.right, B.right);
     }
 
