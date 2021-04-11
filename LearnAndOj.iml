@@ -11,7 +11,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/javaAdvance/gson-2.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../javaAdvance/gson-2.3.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -21,6 +21,15 @@
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/lib/gson-2.8.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../Download/Compressed/mysql-connector-java-8.0.15/mysql-connector-java-8.0.15.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
